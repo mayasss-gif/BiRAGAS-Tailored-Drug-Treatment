@@ -1,0 +1,5 @@
+# source materials — kept local, not deployed
+*.docx
+*.pdf
+~$*
+.DS_Store
