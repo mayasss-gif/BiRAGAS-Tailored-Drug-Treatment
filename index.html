@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1920, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F0F0F">
 <title>BiRAGAS · Tailored Drug Treatment</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,6 +113,101 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;o
 .now-playing .eq span:nth-child(3){height:70%;animation-delay:0.4s}
 .now-playing .eq span:nth-child(4){height:90%;animation-delay:0.1s}
 @keyframes eq{0%,100%{transform:scaleY(0.4)}50%{transform:scaleY(1)}}
+
+/* ====== SIDE-NAV OVERLAYS (always-visible large arrow buttons) ====== */
+.side-nav{position:fixed;top:50%;transform:translateY(-50%);z-index:70;display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:rgba(15,15,15,0.72);color:var(--paper);border:2px solid rgba(244,239,231,0.45);cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:background 0.22s ease,border-color 0.22s ease,box-shadow 0.22s ease,transform 0.18s ease,opacity 0.22s ease;font-family:"DM Mono",ui-monospace,monospace;font-size:34px;font-weight:300;line-height:1;padding:0;-webkit-tap-highlight-color:transparent;user-select:none}
+.side-nav .chev{display:block;transform:translateY(-2px)}
+.side-nav:hover:not(:disabled){background:var(--red);border-color:var(--red);box-shadow:0 10px 28px rgba(230,57,70,0.4);transform:translateY(-50%) scale(1.06)}
+.side-nav:active:not(:disabled){transform:translateY(-50%) scale(0.94)}
+.side-nav:disabled{opacity:0.22;cursor:not-allowed;pointer-events:none}
+.side-nav.prev{left:24px}
+.side-nav.next{right:24px}
+.side-nav:focus-visible{outline:3px solid var(--red);outline-offset:4px}
+
+/* ====== ENHANCED FOOTER NAV ====== */
+.footer .nav-btn{min-width:54px;min-height:44px;font-size:20px;padding:10px 22px;display:inline-flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent}
+.footer .pip{width:14px;height:14px;border-radius:50%}
+.footer .pip:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.btn,.nav-btn,.pip,.side-nav{ -webkit-tap-highlight-color: transparent; }
+.btn:focus-visible,.nav-btn:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+
+/* ====== RESPONSIVE — tablet & smaller (≤900px) ====== */
+@media (max-width: 900px){
+  html,body{font-size:17px}
+  .side-nav{width:56px;height:56px;font-size:28px}
+  .side-nav.prev{left:14px}
+  .side-nav.next{right:14px}
+  .spread{padding:36px 44px 48px}
+  .body-slide{padding:36px 44px 48px}
+  .cover h1{font-size:clamp(64px,9.5vw,140px);line-height:0.95}
+  .body-slide h2{font-size:clamp(42px,6.8vw,104px);line-height:1}
+  .cover .sub{font-size:clamp(22px,2.8vw,42px)}
+  .body-slide .body-grid{grid-template-columns:1fr;gap:32px}
+  .body-slide .lede{font-size:clamp(20px,2.8vw,32px);max-width:100%}
+  .body-slide .side .pull{font-size:26px}
+  .close-slide .manifesto{font-size:clamp(40px,5.8vw,80px)}
+  .masthead{padding:8px 22px;font-size:11px}
+  .masthead .brand .b{font-size:18px}
+  .masthead .meta{display:none}
+  .footer{padding:8px 22px;gap:14px}
+  .footer .counter{font-size:18px;min-width:64px}
+}
+
+/* ====== RESPONSIVE — phone (≤600px) ====== */
+@media (max-width: 600px){
+  html,body{font-size:16px;line-height:1.45}
+  .side-nav{width:46px;height:46px;font-size:24px;background:rgba(15,15,15,0.78);border-width:1.5px}
+  .side-nav.prev{left:8px}
+  .side-nav.next{right:8px}
+  .spread{padding:24px 22px 26px}
+  .body-slide{padding:24px 22px 26px}
+  .corner{width:22px;height:22px;border-width:1.5px}
+  .corner.tl,.corner.tr{top:20px}
+  .corner.tl{left:18px}.corner.tr{right:18px}
+  .corner.bl,.corner.br{bottom:34px}
+  .corner.bl{left:18px}.corner.br{right:18px}
+  .cover{justify-content:flex-start;padding-top:8vh}
+  .cover .eyebrow{font-size:11px;letter-spacing:0.22em;margin-bottom:16px}
+  .cover .eyebrow::before{width:28px}
+  .cover h1{font-size:clamp(40px,12vw,72px);line-height:0.98;margin-bottom:16px}
+  .cover .sub{font-size:clamp(18px,5vw,28px)}
+  .cover .meta-row{margin-top:28px;gap:10px;font-size:10px;letter-spacing:0.18em}
+  .body-slide h2{font-size:clamp(28px,7.4vw,52px);line-height:1.02;margin-bottom:16px}
+  .body-slide .eyebrow{font-size:10px;letter-spacing:0.2em;margin-bottom:10px}
+  .body-slide .body-grid{gap:20px}
+  .body-slide .lede{font-size:clamp(16px,4.2vw,22px);padding-left:14px;border-left-width:3px}
+  .body-slide .side{font-size:15px}
+  .body-slide .side .pull{font-size:19px;margin-bottom:14px;padding-bottom:14px;border-bottom-width:1.5px}
+  .body-slide .footnote{font-size:10px;letter-spacing:0.14em;margin-top:14px}
+  .body-slide .audio-hint{display:none}
+  .folio{font-size:10px;letter-spacing:0.16em;padding-bottom:10px;flex-wrap:wrap;gap:8px}
+  .close-slide{padding:36px 24px}
+  .close-slide .manifesto{font-size:clamp(28px,7.6vw,46px);line-height:1.12}
+  .close-slide .manifesto .next{margin-top:18px}
+  .close-slide .eyebrow{font-size:10px;margin-bottom:24px}
+  .close-slide .eyebrow::before,.close-slide .eyebrow::after{width:28px}
+  .close-slide .tag{margin-top:32px;font-size:10px}
+  .masthead{padding:8px 14px;font-size:10px;letter-spacing:0.16em}
+  .masthead .brand{gap:10px}
+  .masthead .brand .b{font-size:16px}
+  .masthead .brand span:not(.b){display:none}
+  .masthead .controls{gap:6px}
+  .masthead .controls .btn{padding:5px 9px;font-size:10px;letter-spacing:0.14em}
+  .masthead .controls .btn#fs-btn{display:none}
+  .footer{padding:8px 12px;gap:8px;font-size:11px}
+  .footer .nav-btn{min-width:46px;min-height:42px;font-size:18px;padding:8px 14px}
+  .footer .counter{font-size:15px;min-width:50px}
+  .footer .scrubber{display:none}
+  .now-playing{bottom:76px;left:10px;font-size:10px;padding:6px 10px;letter-spacing:0.14em}
+}
+@media (max-width: 380px){
+  .masthead .controls .btn#auto-btn{display:none}
+}
+@media (orientation: landscape) and (max-height: 500px){
+  .cover{padding-top:0;justify-content:center}
+  .cover h1{font-size:clamp(48px,9vw,96px)}
+  .body-slide h2{font-size:clamp(32px,5.5vw,72px)}
+}
 </style>
 </head>
 <body>
@@ -123,9 +219,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;o
     </div>
     <div class="meta">MMXXVI · 05.18 · CHAPTER 01</div>
     <div class="controls">
-      <button class="btn" id="audio-btn"><span class="dot"></span>AUDIO · OFF</button>
-      <button class="btn" id="auto-btn"><span class="dot"></span>AUTO · OFF</button>
-      <button class="btn" id="fs-btn">⛶ FULLSCREEN</button>
+      <button class="btn" id="audio-btn" aria-pressed="false" aria-label="Toggle audio narration"><span class="dot"></span>AUDIO · OFF</button>
+      <button class="btn" id="auto-btn" aria-pressed="false" aria-label="Toggle auto-advance to next slide"><span class="dot"></span>AUTO · OFF</button>
+      <button class="btn" id="fs-btn" aria-label="Toggle fullscreen">⛶ FULLSCREEN</button>
     </div>
   </header>
 
@@ -208,12 +304,15 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;o
   </div>
 
   <footer class="footer">
-    <button class="nav-btn" id="prev">←</button>
-    <div class="counter" id="counter">01<span class="of">/</span>05</div>
-    <div class="progress"><div class="bar" id="bar"></div></div>
-    <div class="scrubber" id="scrubber"></div>
-    <button class="nav-btn" id="next">→</button>
+    <button class="nav-btn" id="prev" aria-label="Previous slide">←</button>
+    <div class="counter" id="counter" aria-live="polite" aria-atomic="true">01<span class="of">/</span>05</div>
+    <div class="progress" role="progressbar" aria-label="Slide progress"><div class="bar" id="bar"></div></div>
+    <div class="scrubber" id="scrubber" role="tablist" aria-label="Jump to slide"></div>
+    <button class="nav-btn" id="next" aria-label="Next slide">→</button>
   </footer>
+
+  <button class="side-nav prev" id="side-prev" aria-label="Previous slide" type="button"><span class="chev">‹</span></button>
+  <button class="side-nav next" id="side-next" aria-label="Next slide" type="button"><span class="chev">›</span></button>
 </div>
 
 <audio id="player" preload="auto"></audio>
@@ -231,6 +330,8 @@ const autoBtn = document.getElementById('auto-btn');
 const fsBtn = document.getElementById('fs-btn');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
+const sidePrev = document.getElementById('side-prev');
+const sideNext = document.getElementById('side-next');
 const counter = document.getElementById('counter');
 const bar = document.getElementById('bar');
 const scrubber = document.getElementById('scrubber');
@@ -261,6 +362,8 @@ function updateUI() {
   });
   prevBtn.disabled = cur === 0;
   nextBtn.disabled = cur === N - 1;
+  sidePrev.disabled = cur === 0;
+  sideNext.disabled = cur === N - 1;
 }
 function goTo(i) {
   if (i < 0 || i >= N) return;
@@ -301,6 +404,34 @@ player.addEventListener('ended', () => {
 });
 prevBtn.addEventListener('click', () => goTo(cur - 1));
 nextBtn.addEventListener('click', () => goTo(cur + 1));
+sidePrev.addEventListener('click', () => goTo(cur - 1));
+sideNext.addEventListener('click', () => goTo(cur + 1));
+
+// Touch swipe navigation (mobile/tablet)
+let _tx = null, _ty = null;
+const SWIPE_THRESHOLD = 55;
+document.addEventListener('touchstart', e => {
+  const t = e.changedTouches[0];
+  _tx = t.clientX; _ty = t.clientY;
+}, {passive: true});
+document.addEventListener('touchend', e => {
+  if (_tx === null) return;
+  const t = e.changedTouches[0];
+  const dx = t.clientX - _tx;
+  const dy = t.clientY - _ty;
+  if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    if (dx < 0) goTo(cur + 1); else goTo(cur - 1);
+  }
+  _tx = _ty = null;
+}, {passive: true});
+
+// Reflect aria-pressed when buttons toggle
+function syncAria(){
+  audioBtn.setAttribute('aria-pressed', audioOn ? 'true' : 'false');
+  autoBtn.setAttribute('aria-pressed', autoOn ? 'true' : 'false');
+}
+audioBtn.addEventListener('click', syncAria);
+autoBtn.addEventListener('click', syncAria);
 document.addEventListener('keydown', e => {
   if (e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();goTo(cur+1);}
   else if (e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();goTo(cur-1);}
